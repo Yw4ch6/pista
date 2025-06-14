@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pista Secreta</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      color: lime;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 1.5rem;
+    }
+
+    #mensaje::after {
+      content: '_';
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="mensaje"></div>
+
+  <!-- 🎵 Música de fondo -->
+  <audio id="musica" autoplay loop>
+    <source src="misterio.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML.
+  </audio>
+
+  <script>
+    const texto = "Ur question hv (Answer)?";
+    const mensaje = document.getElementById("mensaje");
+    let i = 0;
+
+    function escribir() {
+      if (i < texto.length) {
+        mensaje.textContent += texto.charAt(i);
+        i++;
+        setTimeout(escribir, 50); // velocidad de escritura
+      }
+    }
+
+    escribir();
+  </script>
+</body>
+</html>
